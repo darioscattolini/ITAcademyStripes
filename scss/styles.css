@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Lato", sans-serif;
+  font-size: 72px;
+  color: white;
+  display: flex;
+  align-items: stretch;
+  border: 3px white solid;
+}
+
+.block5, .block4, .block3, .block2, .block1 {
+  flex-basis: 20%;
+  text-align: center;
+  line-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  border: 3px white solid;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+}
+
+.block5::before, .block4::before, .block3::before, .block2::before, .block1::before {
+  content: "";
+  background-color: white;
+  opacity: 0.1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: skew(30deg);
+  transition: 1s;
+}
+
+.block5:hover::before, .block4:hover::before, .block3:hover::before, .block2:hover::before, .block1:hover::before {
+  transform: scaleX(2);
+  cursor: pointer;
+}
+
+.block1 {
+  background-color: #244F75;
+  animation-name: entranceFromLeft;
+}
+
+.block2 {
+  background-color: #60BFBF;
+  animation-name: entranceFromBelow;
+}
+
+.block3 {
+  background-color: #8C4B7E;
+  animation-name: entranceFromAbove;
+}
+
+.block4 {
+  background-color: #F8BB44;
+  animation-name: entranceFromBelow;
+}
+
+.block5 {
+  background-color: #F24B4B;
+  animation-name: entranceFromRight;
+}
+
+@keyframes entranceFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes entranceFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes entranceFromAbove {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes entranceFromBelow {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

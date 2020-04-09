@@ -1,0 +1,113 @@
+$font-stack: 'Lato', sans-serif;
+$max-height: 100vh;
+$max-width: 100vw;
+$border: 3px white solid;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: $max-height;
+  width: $max-width;
+  font-family: $font-stack;
+  font-size: 72px;
+  color: white;
+  display: flex;
+  align-items: stretch;
+  border: $border;
+}
+
+%block {
+  flex-basis: 20%;
+  text-align: center;
+  line-height: $max-height;
+  position: relative;
+  overflow: hidden;
+  border: $border;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+}
+
+%block::before {
+  content: "";
+  background-color: white;
+  opacity: 0.1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: skew(30deg);
+  transition: 1s;
+}
+
+%block:hover::before {
+  transform: scaleX(2);
+  cursor: pointer;
+}
+
+@mixin block($background-color, $animation-name) {
+  @extend %block;
+  background-color: $background-color;
+  animation-name: $animation-name;
+}
+
+.block1 {
+  @include block(#244F75, entranceFromLeft);
+}
+
+.block2 {
+  @include block(#60BFBF, entranceFromBelow);
+}
+
+.block3 {
+  @include block(#8C4B7E, entranceFromAbove);
+}
+
+.block4 {
+  @include block(#F8BB44, entranceFromBelow);
+}
+
+.block5 {
+  @include block(#F24B4B, entranceFromRight);
+}
+
+@keyframes entranceFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes entranceFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes entranceFromAbove {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes entranceFromBelow {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
